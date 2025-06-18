@@ -12,7 +12,8 @@ class ApiService {
       throw Exception('Error al cargar usuarios');
     }
   }
-// NUEVA función: predecir nivel desde el modelo FastAPI
+
+// NUEVA función: predecir nivel desde el modelo predictivo
   static Future<String> predecirNivel({
     required int puntajeObtenido,
     required int puntajeTotal,
