@@ -4,7 +4,7 @@ import '../models/usuario.dart';
 
 class ApiService {
   Future<List<Usuario>> fetchUsuarios() async {
-    final response = await http.get(Uri.parse('https://backend-noesis-v2.onrender.com/usuarios'));
+    final response = await http.get(Uri.parse('https://backendnoesis.onrender.com/usuarios'));
     if (response.statusCode == 200) {
       List jsonData = json.decode(response.body);
       return jsonData.map((e) => Usuario.fromJson(e)).toList();
@@ -19,7 +19,7 @@ class ApiService {
     required int puntajeTotal,
     required int claseMasRecurridaCod,
   }) async {
-    final url = Uri.parse("https://backend-noesis-v2.onrender.com/predecir_nivel"); // Cambia por tu URL real en producción
+    final url = Uri.parse("https://backendnoesis.onrender.com/predecir_nivel"); // Cambia por tu URL real en producción
     try {
       final response = await http.post(
         url,
@@ -44,7 +44,7 @@ class ApiService {
   // Registrar un nuevo usuario en el sistema
   Future<bool> registrarUsuario(String email, String password) async {
     final response = await http.post(
-      Uri.parse('https://backend-noesis-v2.onrender.com/usuarios/registro'),
+      Uri.parse('https://backendnoesis.onrender.com/usuarios/registro'),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -68,7 +68,7 @@ class ApiService {
   static Future<Map<String, dynamic>> getBestScore(String email) async {
     try {
       final response = await http.get(
-        Uri.parse('https://backend-noesis-v2.onrender.com/usuarios/$email/puntajes'),
+        Uri.parse('https://backendnoesis.onrender.com/usuarios/$email/puntajes'),
         headers: {'Content-Type': 'application/json'},
       );
 
@@ -101,7 +101,7 @@ class ApiService {
       ) async {
     try {
       final response = await http.post(
-        Uri.parse('https://backend-noesis-v2.onrender.com/usuarios/$email/puntajes'),
+        Uri.parse('https://backendnoesis.onrender.com/usuarios/$email/puntajes'),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
           'puntaje_obtenido': puntajeObtenido,
